@@ -143,19 +143,19 @@ async function buscarDados(urlParaEncurtar) {
         body: JSON.stringify({ url: urlParaEncurtar })
     };
 
-    const apiUrl = "https://encurtadorurl.fly.dev/";
+    const apiUrl = "https://encurtadorurl.fly.dev/url";
 
     try {
         const response = await fetch(apiUrl, options);
 
-        if (!response.ok) {
-            throw new Error(`Erro de rede: ${response.status}`);
-        }
-
         const data = await response.json();
 
-        if (data.results && data.results.urlEncurtada) {
-            showSuccess(data.results.urlEncurtada);
+        console.log(data.value);
+
+        if (data.isSuccess) {
+            showSuccess(data.value.urlEncurtada);
+        } else if (data.errorMessage != null) {
+            showError(data.errorMessage);
         } else {
             showError('Erro ao encurtar a URL. Tente novamente.');
         }
