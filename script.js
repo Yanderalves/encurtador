@@ -129,7 +129,6 @@ async function buscarDados(urlParaEncurtar) {
     button.disabled = true;
     button.innerHTML = `
         <i class="fas fa-spinner fa-spin"></i>
-        <span class="loading-dots">Processando</span>
     `;
 
     output.classList.add('opacity-0', 'translate-y-4');
